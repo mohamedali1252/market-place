@@ -34,18 +34,11 @@ mongoose.connect(process.env.MONGO_URL).then(()=>{
 
 //app.use('*',checkID);
 app.use("/api/user",userRoute);
-app.use("/api/auth",authRoute);
+app.use("/auth",authRoute);
 app.use("/api/products",productRoute);
 app.use("/api/orders",orderRoute);
 app.use("/api/cart",cartRoute);
-app.get("/login",(req,res)=>{
-    res.render('login');
-});
 
 
 
 
-//image storage
-//log out
-//file docs to know how to talk with json
-//adding market to user DB
