@@ -1,156 +1,22 @@
 <template>
 <div>
-<div class="top-nav-bar" style="background-color: #33bfb4;"> <!-- Top Bar --> 
-        <div class="search-box">   
-            <h1 style="color: #fff; font-size: 30px; padding: 10px 30px; text-align: left;">Mohamed Ahmed</h1>
-        </div>
-        <div class="menu-bar">
-            <ul>
-                <li>
-                    <a href="/Cart" style="color: white;"> <i class="fas fa-shopping-basket fa-lg"></i> Cart</a>
-                </li>
-                <li>
-                    <a href="/Market" style="color: white;"> <i class="fas fa-store fa-lg"></i> Market</a>
-                </li>
-                <li class="droplist">
-                    <div class="dropdown">
-                        <button class="dropbtn"><i class="fas fa-ellipsis-v"></i></button>
-                        <div class="dropdown-content">
-                            <a class="dropdown-item" href="../My Account/account.html">My Account</a>
-                            <a class="dropdown-item" href="#">Help</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../Login/login.html">Log out</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div> 
-    
-    <!-------------------------- Account ----------------------->
-    <div class="account">
-        <div class="container">
-            <div class="row">
-                <div class="col-4" style="color: #33bfb4; margin-top: 10px; margin-bottom: 50px;">
-                    <div class="charge">
-                        <img src="../assets/images/dollar.png" width="70px" style="display: inline; margin: 20px 10px; ">
-                        <h1 style="display: inline; vertical-align: middle;">Charge:</h1>
-                        <h3 style="bottom: 20px;">950.00 LE</h3>
-                    </div>
-                    <!-- <button type="button" class="btn1">Generate transactions reports</button> -->
-                </div>
-                <div class="col-8" style="color: #33bfb4; margin-top: 10px; text-align: center;">
-                    <div class="row1" style="color: #33bfb4; font-size: 25px;">
-                        Purchased Products
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-1.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> T-Shirt</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Mohamed Ali</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 8-1-2020</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-tags"></i> 80.00 LE</h6>
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-2.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Shoes</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Ahmed Mostafa</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 26-5-2021</h6>
+         
+                        <img :src="img" width="150px">
+                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> {{title}}</h4>
+                        <h6 style="margin: auto;"><i class="fas fa-tags"></i> {{price}}</h6>
+          <!-- <div class="row2">
+                        <img src="../assets/images/buy-3.jpg" width="150px">
+                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Trousers</h4>
                         <h6 style="margin: auto;"><i class="fas fa-tags"></i> 110.00 LE</h6>
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-3.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Trousers</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Mostafa Samir</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 5-2-2021</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-tags"></i> 115.00 LE</h6>
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-4.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Watch</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Mostafa Mohsen</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 7-8-2018</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-tags"></i> 45.00 LE</h6>
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-2.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Shoes</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Mohamed Fathy</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 30-11-2018</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-tags"></i> 150.00 LE</h6>
-                    </div>
-                    <hr>
-                    <div class="row1" style="color: #33bfb4; font-size: 25px;">
-                        Sold Products
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-2.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Shoes</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Mohamed Ali</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 17-11-2021</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-tags"></i> 100.00 LE</h6>
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-4.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Watch</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Hussein Mahmoud</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 13-12-2020</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-tags"></i> 35.00 LE</h6>
-                    </div>
-                    <!-- <hr>
-                    <div class="row1" style="color: #33bfb4; font-size: 25px; margin-top: 25px;">
-                        Ordered Products
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-1.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> T-Shirt</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Mohamed Ali</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 30-11-2021</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-question"></i> Shipped</h6>
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-2.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Shoes</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Mohamed Fathy</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 8-10-2021</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-question"></i> Done</h6>
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-3.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Trousers</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Mostafa Mohsen</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 26-11-2021</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-question"></i> Deal</h6>
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-2.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Shoes</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Mostafa Samir</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 2-12-2021</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-question"></i> Shipped</h6>
-                    </div>
-                    <div class="row2">
-                        <img src="../assets/images/buy-4.jpg" width="150px">
-                        <h4 style="margin-top: 10px;"><i class="fab fa-product-hunt"></i> Watch</h4>
-                        <h6 style="margin: auto;"><i class="fas fa-handshake"></i> Mohamed Ali</h6>
-                        <h6 style="margin: auto;"><i class="far fa-calendar-alt"></i> 18-10-2021</h6>
-                        <h6 style="margin: auto;"><i class="fas fa-question"></i> Shipped</h6>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-    </div>
+         </div> -->
 </div>
 </template>
-
 <script>
-
 export default {
-  name: 'Account',
-  components: {
-  }
-}
+  name: "PurchasedComp",
+props: ["img","title","price"]
+};
 </script>
-
 <style scoped>
 
 
@@ -728,8 +594,7 @@ input:focus
     margin-top: 20px;
 }
 
-
-.account
+.market
 {
     margin-bottom: 60px;
 }
@@ -750,24 +615,6 @@ input:focus
 {
     font-size: 35px;
     text-align: right;
-}
-
-.btn1
-{
-    color: #fff;
-    padding: 10px 0;
-    position: fixed;
-    margin-top: 200px;
-    height: 45px;
-    width: 25%;
-    border-radius: 5px;
-    border: none;
-    background-color: #33bfb4;
-}
-
-.btn1:hover
-{
-    background-color: #06b4a6;
 }
 
 .line
@@ -798,12 +645,9 @@ input:focus
 }
 
 
+
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css');
 @import url('https://use.fontawesome.com/releases/v5.7.0/css/all.css');
-
-
-
-
 
 
 </style>
