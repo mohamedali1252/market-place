@@ -5,13 +5,12 @@ const ProductSchema=new mongoose.Schema(
         desc:{ type: String ,required:true },
         img:{ type: String ,required:true},
         categories:{ type: Array},
-        size:{ type: String },
-        color:{ type: String },
         price:{ type: Number ,required:true},
-        userId:{ type: String ,required:true}
-    },
-    {
-        timestamps:true
+        sellerId:{ type: String ,required:true},
+        buyerId:{type:String,default:""},
+        selledAt:{type:Date},
+        quantity:{type:Number,default:1},
+        selled:{type:Boolean,default:false} //if selled true,not selled false
     }
 );
 

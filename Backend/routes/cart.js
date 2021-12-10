@@ -1,10 +1,12 @@
 const router = require("express").Router();
-const {checkUser,verifyTokenAndAuthirization, verifyTokenAndAdmin }=require("./verifyToken");
+const {checkUser,verifyTokenAndAdmin }=require("./verifyToken");
 const Cart = require("../models/Cart");
+const User = require("../models/User");
+
 
 //CREATE
-//replace with verifyTokenAndAdmin if the admin can create product
-router.post("/", checkUser ,async( req,res)=>{ //everone can create product
+
+router.post("/", checkUser ,async( req,res)=>{ 
     const newcart = new Cart(req.body);
     try{
         const savedCart = await newcart.save();
@@ -19,17 +21,20 @@ router.post("/", checkUser ,async( req,res)=>{ //everone can create product
 //UPDATE
 router.put("/:id",checkUser ,async (req,res)=>{
     try{
-        const updatedCart = await Cart.findByIdAndUpdate(req.params.id,{
-            $set:req.body,
+        const updatedCart = await Cart.findOneAndUpdate({userId:req.params.id},{
+            $push:req.body,
         },{new:true});
         res.status(200).json(updatedCart);
     }catch(err){
         res.status(500).json(err);
     }
 });
+//cart in register
+
+
+
 
 //DELETE
-
 router.delete("/:id", checkUser ,async (req,res)=>{
     try{
         await Cart.findByIdAndDelete(req.params.id);
@@ -38,6 +43,18 @@ router.delete("/:id", checkUser ,async (req,res)=>{
         res.status(500).json(err);
     }
 });
+
+//DELETE THE CART PRODUCT
+router.delete("/updateproduct/:userid/:productid", checkUser ,async (req,res)=>{
+    try{
+        const product = await Cart.findOneAndUpdate({userid:req.params.userid},{ $pull: { products : { productId: req.params.productid} } },{new:true});
+        res.status(200).json(product);
+    }catch(err){
+        res.status(500).json(err);
+    }
+});
+
+
 
 //GET USER CART 
 router.get("/find/:userId", checkUser ,async (req,res)=>{
@@ -49,6 +66,7 @@ router.get("/find/:userId", checkUser ,async (req,res)=>{
     }
 });
 
+
 //GET ALL
 router.get("/",verifyTokenAndAdmin,async (req,res)=>{
     try{
@@ -58,8 +76,6 @@ router.get("/",verifyTokenAndAdmin,async (req,res)=>{
         res.status(500).json(err);
     }
 });
-
-
 
 
 module.exports = router ;

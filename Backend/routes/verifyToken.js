@@ -1,7 +1,5 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const Order = require("../models/Order");
-
 
 
 const checkUser =  (req,res,next)=>{
@@ -26,28 +24,6 @@ const checkUser =  (req,res,next)=>{
 };
 
 
-const checkID =  (req,res,next)=>{
-    const token = req.cookies.jwt;
-    if(token){
-        jwt.verify(token,process.env.JWT_SEC, async (err,decodedToken)=>{
-            if(err){
-                res.locals.user = null;
-                next();
-            }
-            else{
-                //req.user=user;
-                let user = await User.findById(decodedToken._Id);
-                res.locals.user = user;
-                next();
-            }
-
-        });
-    }
-    else{
-        res.locals.user = null;
-        next();
-    }
-};
 
 
 const verifyTokenAndAuthirization = (req,res,next)=>{
@@ -76,4 +52,4 @@ const verifyTokenAndAdmin = (req,res,next)=>{
 
 
 
-module.exports = {checkUser,verifyTokenAndAuthirization,verifyTokenAndAdmin,checkID} ;
+module.exports = {checkUser,verifyTokenAndAuthirization,verifyTokenAndAdmin} ;

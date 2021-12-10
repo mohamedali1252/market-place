@@ -23,6 +23,7 @@ const UserSchema=new mongoose.Schema(
         isAdmin:{type: Boolean,default:false},
         //market:{type:Array} //convert to 2D array 
         //refreshToken:{type:Array}
+        balance:{type:Number,default:1000},
     },
     {
         timestamps:true

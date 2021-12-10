@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {verifyTokenAndAuthirization, verifyTokenAndAdmin }=require("./verifyToken");
+const {checkUser,verifyTokenAndAuthirization, verifyTokenAndAdmin }=require("./verifyToken");
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
 
@@ -33,7 +33,7 @@ router.delete("/:id", verifyTokenAndAuthirization ,async (req,res)=>{
 });
 
 //GET USER
-router.get("/find/:id", verifyTokenAndAdmin ,async (req,res)=>{
+router.get("/find/:id", checkUser ,async (req,res)=>{
     try{
         const user = await User.findById(req.params.id);
         const {password, ...others}= user._doc;
@@ -55,8 +55,8 @@ router.get("/find/:id", verifyTokenAndAdmin ,async (req,res)=>{
 // });
 
 
-//GET USER STATS
 
+//GET USER STATS
 router.get("/stats",verifyTokenAndAdmin,async (req,res)=>{
     const date = new Date();
     const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));//it gonna return us the last year
