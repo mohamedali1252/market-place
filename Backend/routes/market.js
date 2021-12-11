@@ -54,6 +54,7 @@ router.get("/getMyProducts/:userid", checkUser ,async (req,res)=>{
             obj['title'] = product.title;
             obj['categories'] = product.categories;
             obj['price'] = product.price;
+			obj['img']=product.img;
             products.push(obj);
         });
         if(products){
@@ -79,6 +80,7 @@ router.get("/getOthersProduct/:userid", checkUser ,async (req,res)=>{
             obj['title'] = product.title;
             obj['categories'] = product.categories;
             obj['price'] = product.price;
+			obj['img']=product.img;
             products.push(obj);
         });
         if(products){

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {checkUser }=require("./verifyToken");
+const {checkUser,verifyTokenAndAuthirization, verifyTokenAndAdmin }=require("./verifyToken");
 const Product = require("../models/Product");
 const Cart = require("../models/Cart");
 const User = require("../models/User");
@@ -108,10 +108,9 @@ router.put("/confirmPayment/:userid",checkUser ,async (req,res)=>{
                  res.status(200).json("the transaction was successfull");
             }
         }
-        res.status(200).json(errors);
+        res.status(200);
     }catch(err){
-        console.log(errors);
-        console.log(err);
+
         res.status(500).json(err);
     }
 });
