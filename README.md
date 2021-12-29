@@ -1,4 +1,4 @@
-# Market-place
+# Online Marketplace
 
 <div align="center">
 <img src="https://github.com/MohamedAhmed412000/Marketplace/blob/main/market%20online.png" width="400" >  
@@ -12,11 +12,11 @@
 
 ## Table of contents
 <!--ts-->
-* [Background](##Background)
-* [Technologies](##Technologies)
-* [Features](##Features)
-* [Pre-installed](##pre-installed)
-* [Things-you-need](##Things-you-need)
+* [Background](#background)
+* [Technologies](#technologies)
+* [Features](#features)
+* [Pre-installed](#pre-installed)
+* [Things-you-need](#things-you-need)
 <!--te-->
 
 ## Background
