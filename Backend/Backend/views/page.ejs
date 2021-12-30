@@ -1,0 +1,46 @@
+
+
+
+
+
+<script>
+    const form = document.querySelector('form');
+    const emailError = document.querySelector('.email.error');//the class of the error div must be email and error
+    const passwordError = document.querySelector('.password.error');
+    const usernameError = document.querySelector('.username.error');
+    const messError = document.querySelector('.mess.error'); //this for the 'email or user name is already used' error
+    form.addEventListener('submit',async(e)=>{
+        e.preventDefault();
+        //reset the errors
+        emailError.textContent = '';
+        passwordError.textContent = '';
+        usernameError.textContent = '';
+        messError = '';
+        //get the values
+        const email = form.email.value;
+        const password = form.password.value;
+        const username = form.username.value;
+        try{
+            const res = await fetch('/api/auth/register',{
+                method:'POST',
+                body:JSON.stringify({username:username,email:email,password:password}),
+                headers:{'Content-Type':'application/json'}
+            });
+            const data = res.json();
+            if(data.errors){
+                emailError.textContent = data.errors.email;
+                passwordError.textContent = data.errors.password;
+                usernameError.textContent = data.errors.username;
+                messError.textContent = data.errors.mess;
+            }
+            if(data.id){
+                location.assign('');//home page directory
+            }
+        }catch(err){
+
+        }
+        //send those variables in json in a post request to register_function 
+
+    });
+
+</script>
