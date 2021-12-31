@@ -46,15 +46,6 @@ rs.initiate(config);
 
 
 
-mongo --port 57040
-
-config = {_id: "conf",members:[
-    {_id:0,host:"localhost:57040"},
-    {_id:1,host:"localhost:57041"},
-    {_id:2,host:"localhost:57042"} ]
-};
-rs.initiate(config);
-
 
 
 then run the command:
@@ -64,11 +55,44 @@ mongo --port 21010
 db.adminCommand({addshard:"shard1/" + "localhost:27017"}); //this is the primary nodes not the replicas
 db.adminCommand({addshard:"shard2/" + "localhost:37017"});
 db.adminCommand({addshard:"shard3/" + "localhost:47017"});
-db.adminCommand({enableSharding:"shop"});
+db.adminCommand({enableSharding:"shop"}); // sh.enableSharding("shop")
 use shop
-db.adminCommand({shardCollection:"shop.users", key:{_id:1}});
+db.adminCommand({shardCollection:"shop.users", key:{_id:1}}); // sh.shardCollection("shop.users",{"username":"hashed"})
 
 
+new:
+
+db.users.getShardDistribution() to show the distribution of the data //in mongos
+
+mongo mongodb://localhost:27017,localhost:27018,localhost:27019/?replicaSet=shard1
+mongo mongodb://localhost:37017,localhost:37018,localhost:37019/?replicaSet=shard2
+mongo mongodb://localhost:47017,localhost:47018,localhost:47019/?replicaSet=shard3
+db.getReplicationInfo()
+rs.conf()
+
+mongo mongodb://localhost:27018
+mongo mongodb://localhost:27019
+
+
+mongo mongodb://localhost:37018
+mongo mongodb://localhost:37019
+
+mongo mongodb://localhost:47018
+rs.secondaryOk()
+now we can see the data using:
+show dbs
+use shop
+show collections
+db.users.find().pretty()
+
+
+mongo mongodb://localhost:47019
+rs.secondaryOk()
+now we can see the data using:
+show dbs
+use shop
+show collections
+db.users.find().pretty()
 
 
 
